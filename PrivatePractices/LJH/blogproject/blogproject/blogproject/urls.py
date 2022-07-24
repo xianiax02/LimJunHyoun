@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blogapp import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'),
@@ -26,7 +28,12 @@ urlpatterns = [
     path('formcreate/',views.formcreate, name='formcreate'),
     #using model form
     path('modelformcreate/',views.modelformcreate,name='modelformcreate'),
-    path('detail/<int:blog_id>',views.detail,name='detail')#index.html에서 같이 넘어온 id값을 int:blog_id에 담아 views.detail함수로 넘겨 실행한다.
+    path('detail/<int:blog_id>',views.detail,name='detail'),#index.html에서 같이 넘어온 id값을 int:blog_id에 담아 views.detail함수로 넘겨 실행한다.
+    path('create_comment/<int:blog_id>',views.create_comment, name='create_comment'),
     
 
+
 ]
+
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ #media 파일에 접근할 수 있는 url 추가
