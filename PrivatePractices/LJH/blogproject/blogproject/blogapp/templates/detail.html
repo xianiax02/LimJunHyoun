@@ -18,3 +18,9 @@
     {{comment_form}}
     <input type="submit">
 </form>
+
+
+{% for comment in blog_detail.comment_set.all%}<!--특정 객체를 참조하고 있는 모델들의 집합 blog_detail이라는 모델을 참조하고 있는 외래키를 가진 comment 집합을 전부 부른다-->
+<p>{{comment}}</p>
+<hr><!--선그어주기-->
+{% endfor %}

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogapp',
+    'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -103,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
+
+#LOGIN_REDIRECT_URL = '/' 는 리디렉트를 세팅스에서 입력하게 한다.
 
 LANGUAGE_CODE = 'en-us'
 

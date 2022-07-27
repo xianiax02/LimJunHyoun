@@ -1,3 +1,11 @@
+{% if user.is_authenticated %}
+안녕하세요, {{user.username}}님!
+<a href="{% url 'logout' %}">로그아웃</a>
+{% else %}
+아직 로그인이 되지 않았어요..
+<a href="{% url 'login'%}">로그인</a>
+{% endif %}
+
 <h1>My simple Blog</h1>
 <!--{{posts}}이대로 하면 queryset안에 감싸져서 출력되기 때문에 템플릿 언어로 파이썬의 반복문, 조건문, 분기를 쓸 수 있게 가공한다-->
 {% for post in posts%}
@@ -5,6 +13,8 @@
     <h4>작성 날짜:{{post.date}} primary key{{post.id}}</h4>
 
 {% endfor %}
+{% if user.is_authenticated %}
 <a href="{% url 'new' %}">HTML을 이용한 새 글 작성</a></br>
 <a href="{% url 'formcreate'%}">장고 폼 이용 새 글 작성</a></br>
 <a href="{% url 'modelformcreate' %}">모델 폼 이용 새 글 작성</a></br>
+{% endif %}

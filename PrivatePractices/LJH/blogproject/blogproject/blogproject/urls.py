@@ -18,6 +18,7 @@ from django.urls import path
 from blogapp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from accounts import views as accounts_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'),
@@ -30,8 +31,8 @@ urlpatterns = [
     path('modelformcreate/',views.modelformcreate,name='modelformcreate'),
     path('detail/<int:blog_id>',views.detail,name='detail'),#index.html에서 같이 넘어온 id값을 int:blog_id에 담아 views.detail함수로 넘겨 실행한다.
     path('create_comment/<int:blog_id>',views.create_comment, name='create_comment'),
-    
-
+    path('login/', accounts_views.login, name = 'login'),
+    path('logout/',accounts_views.logout,name='logout')
 
 ]
 
