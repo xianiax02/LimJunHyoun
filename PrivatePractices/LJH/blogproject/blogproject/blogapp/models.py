@@ -17,6 +17,6 @@ class comment(models.Model):
     post=models.ForeignKey(Blog, on_delete=models.CASCADE)#cascade-->삭제되면 그 게시물을 참조하고 있는 코멘트 모델도 삭제한다. 어떤 게시물에 달린 댓글인지를 알 수 있는, 포스트 객체에 대한 외래키, 참조할 것임
     
     def __str__(self):
-        return self.title
+        return self.comment
 
 # Create your models here.
