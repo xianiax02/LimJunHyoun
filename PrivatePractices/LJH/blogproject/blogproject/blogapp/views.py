@@ -1,4 +1,7 @@
+from dataclasses import fields
+from msilib.schema import ListView
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from .models import Blog
 from django.utils import timezone
 from .forms import BlogForm,BlogModelForm,commentform
@@ -67,3 +70,25 @@ def create_comment(request,blog_id):
 
 
 # Create your views here.
+'''
+class BlogView(ListView):               #html: 블로그 리스트를 담은 것:(소문자모델)_list.html
+    temlate_name='blogapp/list.html'
+    context_object_name='blog_list'
+    model=Blog
+
+class BlogCreate(CreateView):           #html: form(입력공간)를 담은 것:(소문자모델)_form.html
+    model=Blog
+    fields=['title','body']
+    success_url=reverse_lazy('list')
+
+class BlogDetail(DetailView):           #html: 상세 페이지를 담은 것:(소문자모델)_detail.html
+    model=Blog
+
+class BlogUpdate(UpdateView):           #html: form(입력공간)를 담은 것:(소문자모델)_form.html
+    model=ClassBlog
+    fields=['title','body']
+    success_url=reverse_lazy('list')
+
+class BlogDelete(DeleteView):           #html: 진짜 지울것인지를 담은 것:(소문자모델)_delete_confirm.html
+    model=Blogsuccess_url=reverse_lazy('list')
+    '''

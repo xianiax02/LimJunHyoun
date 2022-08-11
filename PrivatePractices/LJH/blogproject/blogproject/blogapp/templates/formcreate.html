@@ -2,7 +2,7 @@
 <form action="" method="POST" enctype="multipart/form-data"> <!--파일 업로드를 하게 되면 멀티파트 폼데이터 써줘야함 이거 액션에 비워놓는게 맞나?-->
     {% csrf_token %}
     <table>
-        {{form.as_table}}  <!--form.as_table은 테이블이 쌓여있게 form.as_p는 p태그  -->
+        {{form.as_table}}  <!--form.as_table은 테이블이 싸여있게 form.as_p는 p태그  -->
     </table>
     <input type="submit" value="새글 생성하기">
 </form>
