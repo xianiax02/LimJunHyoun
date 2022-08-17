@@ -5,7 +5,7 @@ def connect_api() :
     #secretkey='django-insecure-54_)h8mpwy*j^p0u93^-bqyjtel06#s0ke4uh(br1b_@+yd0yp'
     apikey='GTXHIZKs2B6kpsOwgFvpBmGb1'
     apikeysecret='MiDErYRlw7iPkiFLCK4GBp4sfb7TENBwgIWm6adUVGm0di92Qu'
-    accesstoken='1544839648220188672-GhJsKSMc59wsObdotenSMe3eSaJvTTs'
+    accesstoken='1544839648220188672-GhJsKSMc59wsObdotenSMe3eSaJvTT'
     accesstokensecret='W8qDgUOxOlsaQm4LlnMCGBZv8U4jpjkAvlvIVyP2n1R68'
 
     # 트위터에 접근하기
@@ -25,7 +25,7 @@ def parse_tweet_response(info) :
     tmp['created_at'] = info['created_at']
     hashtags = info['retweeted_status']['entities']['hashtags']
     tmp['hashtags'] = [hashtag['text'] for hashtag in hashtags]
-    tmp['full_text'] = info['retweeted_status']['full_text']
+    tmp['full_text'] = info['full_text']
 
     # url 다시 찾아야함 원본 게시글 url
     tmp['tweet_url'] = tmp['full_text'][tmp['full_text'].find('http'):]
@@ -43,3 +43,21 @@ def parse_tweet_response(info) :
         tmp['media_url'] = None
 
     return tmp
+
+searched_id=[]
+
+def extract(rawresults):
+    global searched_id
+    if 'extended_entities' in rawresults:
+        searched_id.append(rawresults['id'])
+        extractedresults={}
+        extractedresults['user_name']=rawresults['entities']['user_mentions'][0]['name']
+        extractedresults['user_screen_name']=rawresults['entities']['user_mentions'][0]['screen_name']
+        extractedresults['created_at']=rawresults['created_at']
+        extractedresults['retweet_count']=rawresults['retweeted_status']['retweet_count']
+        extractedresults['in_reply_to_status_id']=rawresults['in_reply_to_status_id']
+        extractedresults['favorite_count']=rawresults['retweeted_status']['favorite_count']
+        extractedresults['meida_url']=rawresults['retweeted_status']['extended_entities']['media']
+        return extractedresults
+    else:
+        return None#맞나
