@@ -1,0 +1,8 @@
+{
+    "git.ignoreLimitWarning": true,
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "limits": "c",
+        "type_traits": "c"
+    }
+}
